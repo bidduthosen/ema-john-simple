@@ -28,7 +28,7 @@ const Orders = () => {
                     ></ReViewItems>)
                 }
                 {
-                    cart.length === 0 && <h3>No More Review.. Pleaze click <Link to='/'>Shop More</Link> </h3>
+                    cart.length === 0 && <h3>No More Review.. Please click <Link to='/'>Shop More</Link> </h3>
                 }
             </div>
             <div className='order-part'>
