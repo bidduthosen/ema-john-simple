@@ -1,23 +1,46 @@
-import logo from './logo.svg';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './App.css';
+import About from './components/About/About';
+import Orders from './components/Orders/Orders';
+import Shop from './components/Shop/Shop';
+import Inventory from './inventory/Inventory';
+import Main from './layout/Main';
+import { ProductAndCardDLoader } from './loaders/ProductAndCardLoader';
 
 function App() {
+  const router = createBrowserRouter([
+    {
+      path: '/', 
+      element: <Main></Main>,
+      children: [
+        {
+          path: '/',
+          loader: () => fetch('products.json'),
+          element: <Shop></Shop>
+        },
+        {
+          path: 'orders',
+          loader: ProductAndCardDLoader,
+          element: <Orders></Orders>
+        },
+        {
+          path: 'inventory',
+          element: <Inventory></Inventory>
+        },
+        {
+          path: 'about', 
+          element: <About></About>
+        }
+      ]
+    },
+    {
+      path: '*',
+      element: <div>plz Not Found : 404</div>
+    }
+  ])
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <RouterProvider router={router}></RouterProvider>
     </div>
   );
 }

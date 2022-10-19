@@ -1,0 +1,25 @@
+.shop-container{
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    margin: 20px;
+
+}
+.products-part{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-top: 30px;
+}
+.order-part{
+    background: rgba(255, 153, 0, 0.3);
+    padding: 15px;
+}
+.order-part h4{
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 20px;
+    letter-spacing: 0.005em;
+
+}
