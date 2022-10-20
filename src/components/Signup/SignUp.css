@@ -1,0 +1,20 @@
+.form-sign-container{
+    width: 492px;
+    height: 700px;
+    margin: 20px auto;
+    background: #FFFFFF;
+    border: 1px solid #95A0A7;
+    border-radius: 8px;
+    padding-left: 38px;
+}
+.error-msg{
+    color: rgb(212, 9, 9);
+}
+.google-btn{
+    width: 415px;
+    height: 55px;
+    border: 1px solid #95A0A7;
+    border-radius: 5px;
+    padding-left: 10px;
+    font-size: 16px;
+}

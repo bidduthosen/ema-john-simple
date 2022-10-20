@@ -1,11 +1,15 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './App.css';
 import About from './components/About/About';
+import Login from './components/Login/Login';
 import Orders from './components/Orders/Orders';
+import Shipping from './components/Shipping/Shipping';
 import Shop from './components/Shop/Shop';
+import SignUp from './components/Signup/SignUp';
 import Inventory from './inventory/Inventory';
 import Main from './layout/Main';
 import { ProductAndCardDLoader } from './loaders/ProductAndCardLoader';
+import PrivateRoutes from './Routes/PrivateRoutes';
 
 function App() {
   const router = createBrowserRouter([
@@ -24,12 +28,24 @@ function App() {
           element: <Orders></Orders>
         },
         {
+          path: 'shipping',
+          element: <PrivateRoutes><Shipping></Shipping></PrivateRoutes>
+        },
+        {
           path: 'inventory',
-          element: <Inventory></Inventory>
+          element: <PrivateRoutes><Inventory></Inventory></PrivateRoutes>
         },
         {
           path: 'about', 
           element: <About></About>
+        },
+        {
+          path: 'login',
+          element: <Login></Login>
+        },
+        {
+          path: 'signup',
+          element: <SignUp></SignUp>
         }
       ]
     },

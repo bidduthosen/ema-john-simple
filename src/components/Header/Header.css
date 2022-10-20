@@ -13,6 +13,10 @@
     color: #ffff;
 }
 .header a:hover{
-    color: coral;
-    border: 1px solid darkblue;
+    color: salmon;
+    border: 1px solid salmon;
+}
+.logout-link{
+    border: 1px solid #148b00;
+    border-radius: 15px;
 }
