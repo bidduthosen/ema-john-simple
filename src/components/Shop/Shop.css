@@ -23,3 +23,34 @@
     letter-spacing: 0.005em;
 
 }
+
+/* pagination */
+.pagination-container{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    text-align: center;
+    margin-top: 40px;
+}
+.pagination{
+    margin-bottom: 60px;
+}
+.pagination button{
+    margin: 6px;
+    padding: 6px 14px;
+}
+.pagination .selected{
+    border: 4px solid black;
+    padding: 6px 16px;
+}
+.pagination-container p{
+    font-weight: 600;
+    border: 1px solid black;
+    padding: 10px 10px;
+    border-radius: 20px;
+    font-size: large;
+}
+.select-option{
+    padding: 10px;
+    border: 2px solid black;
+}
