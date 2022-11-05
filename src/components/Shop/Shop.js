@@ -105,7 +105,7 @@ const Shop = () => {
                     {
                         [...Array(pages).keys()].map(number=> <button 
                             key={number}
-                            className={number === page && "selected"}
+                            className={number === page ? "selected" : ''}
                             onClick={()=>setPage(number)}
                             >{number + 1}</button>)
                     }
