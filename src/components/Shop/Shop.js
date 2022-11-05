@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useLoaderData } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { addToDb, deleteShoppingCart, getStoredCart } from '../../utilities/fakedb';
 import Cart from '../cart/Cart';
 import Product from '../Product/Product';
@@ -15,7 +15,6 @@ current page: page
 
 
 const Shop = () => {
-    // const {products, count} = useLoaderData();
     const [products, setProducts] = useState([]);
     const [count, setCount] = useState(0);
     const [cart, setCart] = useState([]);
@@ -23,7 +22,6 @@ const Shop = () => {
     const [size, setSize] = useState(10)
 
     const pages = Math.ceil(count / size);
-    console.log(pages)
 
     useEffect(()=>{
         const url = `http://localhost:5000/products?page=${page}&size=${size}`;
@@ -45,16 +43,29 @@ const Shop = () => {
     useEffect(()=>{
         const storedCart = getStoredCart()
         const saveCart = [];
-        for(const id in storedCart){
-            const addedProduct = products.find(product=> product._id ===id);
-            if(addedProduct){
-                const quantity = storedCart[id];
-                addedProduct.quantity = quantity;
-                saveCart.push(addedProduct)
-                
+
+        const ids = Object.keys(storedCart);
+        fetch('http://localhost:5000/productsByIds',{
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(ids)            
+        })
+        .then(res => res.json())
+        .then(data => {
+            for(const id in storedCart){
+                const addedProduct = data.find(product=> product._id ===id);
+                if(addedProduct){
+                    const quantity = storedCart[id];
+                    addedProduct.quantity = quantity;
+                    saveCart.push(addedProduct)
+                }
             }
-        }
-        setCart(saveCart);
+            setCart(saveCart);
+
+        });
+        
     },[products])
     
     const handleAddToCard = (selectedProduct) =>{
